@@ -1,0 +1,11 @@
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+export const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || "";
+export const API_PREFIX = process.env.REACT_APP_ADMIN_URL;
+export const APP_PREFIX_PATH = `/${process.env.REACT_APP_DASHBOARD}`;
+export const AUTH_PATH = `${APP_PREFIX_PATH}/login`;
+export const VERSION = "1.0.1";
+export const SITE_NAME = "Extension";
+export const PAGE_SIZE = 10;
+export const PAGE_LIMIT = [10, 25, 50, 100];
+export const RECAPTCHA_SITEKEY=process.env.REACT_APP_RECAPTCHA_SITEKEY;
+export const RECAPTCHA_SECRETKEY=process.env.REACT_APP_RECAPTCHA_SECRETKEY;

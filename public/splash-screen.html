@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Splash Page</title>
+	<style>
+		html {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("./splash.png");
+			background-size: cover;
+			z-index: -1;
+		}
+
+		.status {
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+			color: white;
+			font-size: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.loader {
+			margin-left: 12px;
+		}
+
+		.loader,
+		.loader:before,
+		.loader:after {
+			width: 5px;
+			aspect-ratio: .5;
+			display: grid;
+			background: radial-gradient(rgb(235, 234, 234) 68%, #0000 72%) center/100% 50% no-repeat;
+			animation: load 1.2s infinite linear calc(var(--_s, 0)*.4s);
+			transform: translate(calc(var(--_s, 0)*150%));
+		}
+
+		.loader:before,
+		.loader:after {
+			content: "";
+			grid-area: 1/1;
+		}
+
+		.loader:before {
+			--_s: -1
+		}
+
+		.loader:after {
+			--_s: 1
+		}
+
+		@keyframes load {
+			20% {
+				background-position: top
+			}
+
+			40% {
+				background-position: bottom
+			}
+
+			60% {
+				background-position: center
+			}
+		}
+
+		#splash {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		#minimize-btn {
+			color: white;
+			padding: 10px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+		}
+
+		#minimize-btn:hover {
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+		#close-btn {
+			color: white;
+			padding: 10px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+		}
+
+		#close-btn:hover {
+			background: rgba(0, 0, 0, 0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="background"></div>
+	<!-- <div id="splash">
+		<button id="minimize-btn">-</button>
+		<button id="close-btn">x</button>
+	</div> -->
+	<div class="status">
+		<span id="status">Loading</span>
+		<div class="loader"></div>
+	</div>
+</body>
+<script>
+	const { ipcRenderer } = require('electron');
+	ipcRenderer.send("checking", "Checking for updates");
+	ipcRenderer.on("status", (event, message) => {
+		document.querySelector("#status").innerHTML = message;
+	});
+	ipcRenderer.on("isReady", ready => {
+		ipcRenderer.send("ready");
+	})
+</script>
+</html>

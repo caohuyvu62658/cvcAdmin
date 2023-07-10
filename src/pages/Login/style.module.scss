@@ -1,0 +1,75 @@
+.container {
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+}
+
+.content {
+  flex: 1 1;
+  padding: 32px 0;
+}
+
+.formContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  padding-inline: 32px;
+  padding-block: 24px;
+  overflow: auto;
+  background: inherit;
+}
+
+.formTop {
+  text-align: center;
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  line-height: 44px;
+}
+
+.formDesc {
+  margin-block-start: 12px;
+  margin-block-end: 40px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+}
+
+.formLogo {
+  width: 44px;
+  height: 44px;
+  margin-inline-end: 16px;
+  vertical-align: top;
+
+  img {
+    width: 100%;
+  }
+}
+
+.formTitle {
+  position: relative;
+  inset-block-start: 2px;
+  font-weight: 600;
+  font-size: 33px;
+}
+
+.formMain {
+  min-width: 328px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.tabCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.ant-form-item-label {
+  display: none;
+}
